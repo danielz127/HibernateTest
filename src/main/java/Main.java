@@ -8,7 +8,7 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
         UserDetails userDetails = new UserDetails();
-        userDetails.setUserId(3);
+        userDetails.setUserId(1);
         userDetails.setUsername("thirdTimeeBuugy");
         userDetails.setDateTime(new Date());
         userDetails.setDescription("Description quite long");
@@ -19,5 +19,12 @@ public class Main {
         session.save(userDetails);
         session.getTransaction().commit();
         session.close();
+
+        userDetails = null;
+        session = sessionFactory.openSession();
+        session.beginTransaction();
+        userDetails = session.get(UserDetails.class, 1);
+        System.out.println("User name: " + userDetails.getUsername());
+
     }
 }

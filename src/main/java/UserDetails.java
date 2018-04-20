@@ -42,7 +42,7 @@ public class UserDetails {
 
     @Column(name = "USER_NAME")
     public String getUsername() {
-        return username + " from getter";
+        return username ;
     }
 
     public void setUsername(String username) {
