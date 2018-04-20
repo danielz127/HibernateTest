@@ -13,5 +13,6 @@
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hbm2ddl.auto">create</property>
         <mapping class="UserDetails"></mapping>
+
     </session-factory>
 </hibernate-configuration>

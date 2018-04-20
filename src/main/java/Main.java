@@ -8,10 +8,22 @@ import java.util.Date;
 public class Main {
     public static void main(String[] args) {
         UserDetails userDetails = new UserDetails();
-        userDetails.setUserId(1);
         userDetails.setUsername("thirdTimeeBuugy");
         userDetails.setDateTime(new Date());
         userDetails.setDescription("Description quite long");
+        Address address = new Address();
+        address.setCity("Warszawa");
+        address.setState("Mazowia");
+        address.setStreet("Main");
+        userDetails.setHomeAddress(address);
+
+        Address address2 = new Address();
+        address2.setCity("Krakow");
+        address2.setState("Malopolskie");
+        address2.setStreet("Wawelska");
+        userDetails.setOfficeAddress(address2);
+        userDetails.getListOfAdresses().add(address);
+        userDetails.getListOfAdresses().add(address2);
 
         SessionFactory sessionFactory= new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
