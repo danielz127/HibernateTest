@@ -9,26 +9,21 @@ public class Main {
     public static void main(String[] args) {
         UserDetails userDetails = new UserDetails();
         userDetails.setUsername("thirdTimeeBuugy");
-        userDetails.setDateTime(new Date());
-        userDetails.setDescription("Description quite long");
-        Address address = new Address();
-        address.setCity("Warszawa");
-        address.setState("Mazowia");
-        address.setStreet("Main");
-        userDetails.setHomeAddress(address);
-
-        Address address2 = new Address();
-        address2.setCity("Krakow");
-        address2.setState("Malopolskie");
-        address2.setStreet("Wawelska");
-        userDetails.setOfficeAddress(address2);
-        userDetails.getListOfAdresses().add(address);
-        userDetails.getListOfAdresses().add(address2);
+        Vehicle vehicle = new Vehicle();
+        vehicle.setVehicleName("car");
+        Vehicle vehicle1 = new Vehicle();
+        vehicle1.setVehicleName("Jeep");
+        vehicle.setUser(userDetails);
+        vehicle1.setUser(userDetails);
+        userDetails.getVehicle().add(vehicle);
+        userDetails.getVehicle().add(vehicle1);
 
         SessionFactory sessionFactory= new Configuration().configure().buildSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.save(userDetails);
+        session.save(vehicle);
+        session.save(vehicle1);
         session.getTransaction().commit();
         session.close();
 
